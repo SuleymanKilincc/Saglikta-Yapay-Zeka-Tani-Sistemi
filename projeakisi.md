@@ -8,7 +8,7 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Ömer Ensar Şahin:** [Görev: Gereksinim Toplama -> Lütfen buraya görevini tamamladığına dair bilgiyle birlikte; sistemin işlevsel, performans (örn: %85 doğruluk) ve güvenlik (KVKK) gereksinimlerinin neler olduğuna dair çıkardığın özet sonuçları yaz.]
 
-* **Cumali Bilgiç:** [Görev: Teknoloji Seçimi -> Lütfen buraya sadece tamamladım yazma. Seçtiğin teknolojileri ve nedenlerini yaz. Örn: Veritabanı için PostgreSQL, yapay zeka için TensorFlow/Keras kullanacağız çünkü...]
+* **Cumali Bilgiç:** Proje için teknoloji araştırması tamamlandı. Görüntü işleme ve derin öğrenme (CNN) modelleri için yüksek performans sunan **TensorFlow/Keras** kütüphanesi seçildi. Verilerin düzenli ve güvenli bir şekilde saklanması için **PostgreSQL** veritabanı kullanılacaktır. Geliştirme dili olarak kütüphane desteği nedeniyle **Python** tercih edilmiştir.
 
 * **Esmanur Yılmaz:** [Görev: Ortam Kurulumu -> Lütfen buraya kurduğun ortamın özetini yaz. Örn: Geliştirme için PyCharm/VS Code kullanıldı, Python sanal ortamı (venv) oluşturuldu ve gerekli kütüphaneler yüklendi gibi...]
 
