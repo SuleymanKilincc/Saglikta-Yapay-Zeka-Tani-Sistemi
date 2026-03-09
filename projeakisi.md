@@ -10,7 +10,7 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Cumali Bilgiç:** Proje için teknoloji araştırması tamamlandı. Görüntü işleme ve derin öğrenme (CNN) modelleri için yüksek performans sunan **TensorFlow/Keras** kütüphanesi seçildi. Verilerin düzenli ve güvenli bir şekilde saklanması için **PostgreSQL** veritabanı kullanılacaktır. Geliştirme dili olarak kütüphane desteği nedeniyle **Python** tercih edilmiştir.
 
-* **Esmanur Yılmaz:** [Görev: Ortam Kurulumu -> Lütfen buraya kurduğun ortamın özetini yaz. Örn: Geliştirme için PyCharm/VS Code kullanıldı, Python sanal ortamı (venv) oluşturuldu ve gerekli kütüphaneler yüklendi gibi...]
+* **Esmanur Yılmaz:** Geliştirme ortamı için VS Code kullandım. İlk iş, VS Code'da hospital_ai_env adlı bir python sanal ortamı kurdum ve onu aktive ettim. CNN modelleri için terminal üzerinden "pip install" ile TensorFlow ve Keras'ın kurulumunu da tamamladıktan sonra, ek olarak kendim de biraz araştırma yaptıktan sonra hasta verilerini organize etmemize yardımcı olabilmesi için Pandas & Numpy kurulumu da yaptım. PostgreSQL'i de en son bilgisayarıma indirdikten sonra Antigravity'nin desteğiyle bunları birbirine bağladım. Sonuç olarak, kurulumu tamamladım.
 
 * **Zeynep Karataş:** [Görev: Veri Seti İncelemesi -> Lütfen buraya veri setiyle ilgili bulgularını yaz. Örn: Veriler JPEG formatında, X adet sağlıklı Y adet hastalıklı fotoğraf var, görüntüler model için 224x224 piksel olarak yeniden boyutlandırılacak gibi...]
 
