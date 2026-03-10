@@ -12,7 +12,7 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Esmanur Yılmaz:** Geliştirme ortamı için VS Code kullandım. İlk iş, VS Code'da hospital_ai_env adlı bir python sanal ortamı kurdum ve onu aktive ettim. CNN modelleri için terminal üzerinden "pip install" ile TensorFlow ve Keras'ın kurulumunu da tamamladıktan sonra, ek olarak kendim de biraz araştırma yaptıktan sonra hasta verilerini organize etmemize yardımcı olabilmesi için Pandas & Numpy kurulumu da yaptım. PostgreSQL'i de en son bilgisayarıma indirdikten sonra Antigravity'nin desteğiyle bunları birbirine bağladım. Sonuç olarak, kurulumu tamamladım.
 
-* **Zeynep Karataş:** [Görev: Veri Seti İncelemesi -> Lütfen buraya veri setiyle ilgili bulgularını yaz. Örn: Veriler JPEG formatında, X adet sağlıklı Y adet hastalıklı fotoğraf var, görüntüler model için 224x224 piksel olarak yeniden boyutlandırılacak gibi...]
+* **Zeynep Karataş:** Projede kullanılacak veri setini incelemek amacıyla Kaggle üzerinde yer alan **Chest X-Ray Images (Pneumonia)** veri setini araştırdım. Veri setinin göğüs röntgeni görüntülerinden oluştuğu ve **Normal** ile **Pnömoni** olmak üzere iki sınıfa ayrıldığı görüldü. Görüntüler farklı çözünürlüklere sahip olduğu için model eğitimi öncesinde tüm görüntülerin **224x224 boyutuna yeniden ölçeklendirilmesi ve gerekli ön işleme adımlarının uygulanması** planlandı.
 
 ## 2. Hafta
 
