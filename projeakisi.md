@@ -6,7 +6,8 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Süleyman Kılınç (Scrum Master / Yönetici):** GitHub reposu kuruldu ve koruma ayarları yapıldı. **Proje Kapsamı Belirlendi:** Sistem, akciğer röntgenlerinden "Pnömoni (Zatürre)" tespiti yapacaktır. İkili sınıflandırma (Sağlıklı/Hastalıklı) problemi çözülecek olup, model olarak Evrişimli Sinir Ağları (CNN) kullanılacaktır. Veri seti olarak Kaggle "Chest X-Ray Images (Pneumonia)" seçilmiştir.
 
-* **Ömer Ensar Şahin:** [Görev: Gereksinim Toplama -> Lütfen buraya görevini tamamladığına dair bilgiyle birlikte; sistemin işlevsel, performans (örn: %85 doğruluk) ve güvenlik (KVKK) gereksinimlerinin neler olduğuna dair çıkardığın özet sonuçları yaz.]
+* **Ömer Ensar Şahin:** Proje için gereksinim analizi tamamlandı.Doktorlar sisteme giriş yapabilecek.MR ve röntgen görüntüleri yüklenecek.Yapay zeka analiz yapacak.Sonuçlar raporlanacak.Model doğruluk hedefi %85.Veri güvenliği KVKK kurallarına uygun olacak.
+
 
 * **Cumali Bilgiç:** Proje için teknoloji araştırması tamamlandı. Görüntü işleme ve derin öğrenme (CNN) modelleri için yüksek performans sunan **TensorFlow/Keras** kütüphanesi seçildi. Verilerin düzenli ve güvenli bir şekilde saklanması için **PostgreSQL** veritabanı kullanılacaktır. Geliştirme dili olarak kütüphane desteği nedeniyle **Python** tercih edilmiştir.
 
