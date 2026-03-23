@@ -15,6 +15,11 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Zeynep Karataş:** Projede kullanılacak veri setini incelemek amacıyla Kaggle üzerinde yer alan **Chest X-Ray Images (Pneumonia)** veri setini araştırdım. Veri setinin göğüs röntgeni görüntülerinden oluştuğu ve **Normal** ile **Pnömoni** olmak üzere iki sınıfa ayrıldığı görüldü. Görüntüler farklı çözünürlüklere sahip olduğu için model eğitimi öncesinde tüm görüntülerin **224x224 boyutuna yeniden ölçeklendirilmesi ve gerekli ön işleme adımlarının uygulanması** planlandı.
 
-## 2. Hafta
 
-* (İlerleyen haftalarda doldurulacak)
+*2. Hafta (13 - 19 Mart) - Sistem Tasarımı ve Veri Akış Şemaları
+
+Süleyman Kılınç (Scrum Master / Yönetici): 2. hafta planlaması ve genel koordinasyon.
+
+Ömer Ensar Şahin: Kullanım Durumu (Use Case) Diyagramı Hazırlanması.
+
+Cumali Bilgiç: Sistem Akış Şeması (Flowchart) Hazırlanması.
