@@ -21,6 +21,6 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * **Ömer Ensar Şahin:** Sistemin kullanıcı ve analiz motoru arasındaki etkileşimini gösteren **Kullanım Durumu (Use Case) Diyagramı** hazırlandı.
 
-* **Cumali Bilgiç:** Röntgen görüntüsünün sisteme girişinden teşhis sonucuna kadar olan sürecini kapsayan **Sistem Akış Şeması (Flowchart)** hazırlandı.
+* **Cumali Bilgiç:** Sistemin genel mimarisi; Sunum, İş Mantığı ve Veri katmanları olacak şekilde planlandı. Röntgen görüntüsünün sisteme girişinden teşhis sonucuna kadar olan sürecini kapsayan akış şeması ve bileşenler arası REST API iletişimi kurgulandı.
 
 ---
