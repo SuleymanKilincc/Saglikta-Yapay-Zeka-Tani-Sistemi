@@ -17,7 +17,7 @@ Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üy
 
 * ## 2. Hafta (13 - 19 Mart) - Sistem Tasarımı ve Veri Akış Şemaları
 
-* **Süleyman Kılınç (Scrum Master / Yönetici):** 2. hafta planlaması ve genel koordinasyon süreci yönetildi. Diyagram dökümantasyonları kontrol edildi.
+* **Süleyman Kılınç (Scrum Master / Yönetici):** Projenin genel mimari yapısı (Architecture Design) tasarlandı. Sonuç: Kullanıcı arayüzü, analiz motoru ve veri tabanı katmanlarının birbiriyle asenkron bir şekilde haberleşmesine karar verildi.
 
 * **Ömer Ensar Şahin:** Sistemin kullanıcı ve analiz motoru arasındaki etkileşimini gösteren **Kullanım Durumu (Use Case) Diyagramı** hazırlandı.
 
