@@ -1,6 +1,3 @@
-Sağlıkta Yapay Zeka - Proje Akışı ve Haftalık İlerleme
-Bu dosya, Sağlıkta Yapay Zeka takımının haftalık proje ilerlemesini ve üyelerin görev dağılımları sonucunda elde ettikleri çıktıları içermektedir.
-
 1. Hafta (6 - 12 Mart) - Başlangıç ve Ortam Kurulumu
 Süleyman Kılınç (Scrum Master / Yönetici): GitHub reposu kuruldu ve koruma ayarları yapıldı. Proje Kapsamı Belirlendi: Sistem, akciğer röntgenlerinden "Pnömoni (Zatürre)" tespiti yapacaktır. İkili sınıflandırma (Sağlıklı/Hastalıklı) problemi çözülecek olup, model olarak Evrişimli Sinir Ağları (CNN) kullanılacaktır. Veri seti olarak Kaggle "Chest X-Ray Images (Pneumonia)" seçilmiştir.
 
@@ -15,7 +12,7 @@ Zeynep Karataş: Kaggle üzerindeki veri seti araştırıldı. Görüntülerin N
 2. Hafta (13 - 19 Mart) - Mimari Tasarım ve Strateji Geliştirme
 Süleyman Kılınç: Veri Kümesi İncelemesi ve Ön İşleme Stratejisi Geliştirme. (Mevcut tıbbi görüntü veri kümelerinin detaylı incelenmesi; gürültü giderme, normalizasyon ve yeniden boyutlandırma stratejilerinin raporlanması.)
 
-Ömer Ensar Şahin: Hastalık Teşhis Algoritması Araştırması ve Mimari Tasarımı. (Literatürdeki başarılı algoritmaların araştırılması ve projeye en uygun mimarinin belirlenmesi.)
+Ömer Ensar Şahin: Hastalık Teşhis Algoritması Araştırması ve Mimari Tasarımı. (Literatürdeki başarılı algoritmaların (CNN, RNN, Transformer) araştırılması ve projeye en uygun mimarinin belirlenmesi.)
 
 Cumali Bilgiç: Web Arayüzü Gereksinim Analizi ve Prototip Tasarımı. (Doktorların sisteme erişim senaryolarının belirlenerek wireframe tasarımı yapılması.)
 
@@ -26,13 +23,13 @@ Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturm
 3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
 Ömer Ensar Şahin: UI/UX Wireframe Oluşturma. (Kullanıcı arayüzü ve deneyimi tasarımının tamamlanması.) [⚠️ Gecikmiş Görev Takibi Yapılıyor]
 
-Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi. (Röntgen ve MR görüntülerini okuyacak, gürültü giderme ve kontrast artırma yapacak Python fonksiyonları.)
+Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi. (Röntgen ve MR görüntülerini okuyacak Python fonksiyonlarının geliştirilmesi.)
 
-Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi. (TensorFlow/Keras kullanarak basit bir CNN modeli prototipi oluşturulması.)
+Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi. (TensorFlow/Keras kullanarak temel bir CNN modeli prototipi oluşturulması.)
 
 Cumali Bilgiç: Web Arayüzü Temel Tasarımının Oluşturulması. (HTML, CSS ve JavaScript kullanılarak temel bir web arayüzü iskeleti oluşturulması.)
 
 4. Hafta (27 Mart - 2 Nisan) - Veritabanı ve Raporlama Modülleri
-Esmanur Yılmaz: PostgreSQL Veritabanı Şemasının Tasarlanması. (Sistemde kullanılacak verilerin saklanması için tablo ve ilişkilerin oluşturulması.)
+Esmanur Yılmaz: PostgreSQL Veritabanı Şemasının Tasarlanması ve Uygulanması. (Veri tipleri ve indekslerin belirlenerek veritabanı performansının optimize edilmesi.)
 
-Zeynep Karataş: Temel Raporlama Modülünün Geliştirilmesi. (Teşhis sonuçları ve meta verileri içeren raporlama modülünün (PDF vb.) oluşturulması.)
+Zeynep Karataş: Temel Raporlama Modülünün Geliştirilmesi. (Teşhis sonuçlarını ve meta verileri içeren PDF formatında rapor oluşturma modülünün hazırlanması.)
