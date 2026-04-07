@@ -14,7 +14,7 @@ Süleyman Kılınç: Veri Kümesi İncelemesi ve Ön İşleme Stratejisi Gelişt
 
 Ömer Ensar Şahin: Hastalık Teşhis Algoritması Araştırması ve Mimari Tasarımı. (Literatürdeki başarılı algoritmaların (CNN, RNN, Transformer) araştırılması ve projeye en uygun mimarinin belirlenmesi.)
 
-Cumali Bilgiç: Web Arayüzü Gereksinim Analizi ve Prototip Tasarımı. (Doktorların sisteme erişim senaryolarının belirlenerek wireframe tasarımı yapılması.)
+Cumali Bilgiç: Web arayüzü için kullanıcı gereksinimleri analiz edildi. Doktorların sisteme giriş, röntgen yükleme ve rapor alma senaryoları üzerine çalışılarak arayüzün temel akışını gösteren wireframe tasarımı ve kullanıcı etkileşim diyagramı hazırlandı.
 
 Esmanur Yılmaz: Veritabanı Tasarımı ve Entegrasyon Planlaması. (PostgreSQL şemasının tasarlanması; hasta bilgileri, görüntüler ve teşhis sonuçlarının saklanma planı.)
 
@@ -27,4 +27,4 @@ Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının G
 
 Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi.
 
-Cumali Bilgiç: Web Arayüzü Temel Tasarımının Oluşturulması.
+Cumali Bilgiç: Web arayüzü temel tasarımı oluşturuldu. HTML, CSS ve JavaScript kullanılarak; görüntü yükleme modülü, teşhis sonuç ekranı ve raporlama özelliklerini içeren kullanıcı dostu, modüler bir arayüz iskeleti kurgulandı.
