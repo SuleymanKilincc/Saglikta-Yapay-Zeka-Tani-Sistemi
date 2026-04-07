@@ -23,13 +23,8 @@ Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturm
 3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
 Ömer Ensar Şahin: UI/UX Wireframe Oluşturma. (Kullanıcı arayüzü ve deneyimi tasarımının tamamlanması.) [⚠️ Gecikmiş Görev Takibi Yapılıyor]
 
-Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi. (Röntgen ve MR görüntülerini okuyacak Python fonksiyonlarının geliştirilmesi.)
+Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi.
 
-Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi. (TensorFlow/Keras kullanarak temel bir CNN modeli prototipi oluşturulması.)
+Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi.
 
-Cumali Bilgiç: Web Arayüzü Temel Tasarımının Oluşturulması. (HTML, CSS ve JavaScript kullanılarak temel bir web arayüzü iskeleti oluşturulması.)
-
-4. Hafta (27 Mart - 2 Nisan) - Veritabanı ve Raporlama Modülleri
-Esmanur Yılmaz: PostgreSQL Veritabanı Şemasının Tasarlanması ve Uygulanması. (Veri tipleri ve indekslerin belirlenerek veritabanı performansının optimize edilmesi.)
-
-Zeynep Karataş: Temel Raporlama Modülünün Geliştirilmesi. (Teşhis sonuçlarını ve meta verileri içeren PDF formatında rapor oluşturma modülünün hazırlanması.)
+Cumali Bilgiç: Web Arayüzü Temel Tasarımının Oluşturulması.
