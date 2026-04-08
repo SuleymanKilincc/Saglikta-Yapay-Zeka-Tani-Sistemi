@@ -10,23 +10,24 @@
 * Zeynep Karataş: Kaggle üzerindeki veri seti araştırıldı. Görüntülerin Normal ve Pnömoni olarak iki sınıfa ayrıldığı görüldü. Model eğitimi öncesinde tüm görüntülerin 224x224 boyutuna yeniden ölçeklendirilmesi ve ön işleme adımlarının uygulanması planlandı.
 
 2. Hafta (13 - 19 Mart) - Mimari Tasarım ve Strateji Geliştirme
+* Süleyman Kılınç: Veri Kümesi İncelemesi ve Ön İşleme Stratejisi Geliştirme. (Mevcut tıbbi görüntü veri kümelerinin detaylı incelenmesi; gürültü giderme, normalizasyon ve yeniden boyutlandırma stratejilerinin raporlanması.)
 
-* Süleyman Kılınç: Mevcut tıbbi görüntü veri kümelerinin (röntgen, MR vb.) boyut, format ve etiket kalitesi açısından detaylı incelenmesi tamamlandı. Görüntülerin modele girmeden önce geçeceği gürültü giderme, normalizasyon ve yeniden boyutlandırma adımlarını içeren ön işleme stratejisi geliştirildi ve rapor haline getirildi.
+* Ömer Ensar Şahin: Hastalık Teşhis Algoritması Araştırması ve Mimari Tasarımı. Literatürde yaygın kullanılan ve başarı sağlamış algoritmalar (CNN, RNN, Transformer vb.) araştırıldı. Proje gereksinimlerine en uygun mimari belirlenerek çalışma prensipleri ve katmanları planlandı.
 
-* Ömer Ensar Şahin: Hastalık Teşhis Algoritması Araştırması ve Mimari Tasarımı. (Literatürdeki başarılı algoritmaların (CNN, RNN, Transformer) araştırılması ve projeye en uygun mimarinin belirlenmesi.)
+* Esmanur Yılmaz: Veritabanı Tasarımı ve Entegrasyon Planlaması. Projenin ihtiyaç duyduğu PostgreSQL şeması tasarlandı. Hastaların bilgileri, tıbbi görüntüler ve teşhis sonuçlarının nasıl saklanacağı belirlenerek tablo ilişkileri tanımlandı.
 
-* Cumali Bilgiç: Web arayüzü için kullanıcı gereksinimleri analiz edildi. Doktorların sisteme giriş, röntgen yükleme ve rapor alma senaryoları üzerine çalışılarak arayüzün temel akışını gösteren wireframe tasarımı ve   kullanıcı etkileşim diyagramı hazırlandı.
+* Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturma. Teşhis sonuçları, güvenilirlik skorları ve doktor notlarını içeren rapor formatları (PDF, CSV vb.) belirlendi ve örnek bir rapor şablonu oluşturuldu.
 
-* Esmanur Yılmaz: Veritabanı Tasarımı ve Entegrasyon Planlaması. (PostgreSQL şemasının tasarlanması; hasta bilgileri, görüntüler ve teşhis sonuçlarının saklanma planı.)
+ 3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
+* Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi. (Python tabanlı görüntü iyileştirme fonksiyonlarının planlanması.)
 
-* Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturma. (Teşhis sonuçları ve doktor notlarını içerecek rapor şablonlarının tasarımı.)
+* Ömer Ensar Şahin: UI/UX Wireframe Oluşturma. Kullanıcı arayüzü ve kullanıcı deneyimi tasarımı yapılarak sistemin wireframe yapısı oluşturuldu. [⚠️ Gecikmiş Görev Takibi Yapılıyor]
 
-3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
+* Cumali Bilgiç: Web arayüzü gereksinim analizi ve temel iskelet tasarımı çalışmaları.
 
-* Ömer Ensar Şahin: UI/UX Wireframe Oluşturma. (Kullanıcı arayüzü ve deneyimi tasarımının tamamlanması.) [⚠️ Gecikmiş Görev Takibi Yapılıyor]
+4. Hafta (27 Mart - 2 Nisan) - Modül ve Algoritma Geliştirme
+* Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi. TensorFlow/Keras kullanılarak, evrişimli sinir ağı (CNN) katmanları içeren temel bir model prototipi ve eğitim süreci kurgulandı.
 
-* Süleyman Kılınç: DICOM formatındaki tıbbi görüntüleri okuyacak ve ön işleme adımlarını (kontrast artırma, gürültü giderme) uygulayacak Python fonksiyonları geliştirildi. Bu fonksiyonların TensorFlow/Keras modellerine optimize veri girişi sağlaması ve görüntü meta verilerini eksiksiz işlemesi sağlandı.
+* Esmanur Yılmaz: PostgreSQL Veritabanı Şemasının Tasarlanması. Sistemde kullanılacak verilerin (hasta bilgileri, meta veriler, teşhis sonuçları) saklanması için uygun indeksler ve ölçeklenebilir bir yapı tasarlandı.
 
-* Ömer Ensar Şahin: Temel Hastalık Teşhis Algoritması Prototipi Geliştirilmesi.
-
-* Cumali Bilgiç: Web arayüzü temel tasarımı oluşturuldu. HTML, CSS ve JavaScript kullanılarak; görüntü yükleme modülü, teşhis sonuç ekranı ve raporlama özelliklerini içeren kullanıcı dostu, modüler bir arayüz iskeleti   kurgulandı.
+* Zeynep Karataş: Temel Raporlama Modülünün Geliştirilmesi. Teşhis sonuçlarını ve hasta meta verilerini içeren, PDF veya benzeri formatlarda çıktı verebilen temel raporlama modülü tasarlandı.
