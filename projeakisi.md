@@ -1,4 +1,4 @@
-* 1. Hafta (6 - 12 Mart) - Başlangıç ve Ortam Kurulumu
+ 1. Hafta (6 - 12 Mart) - Başlangıç ve Ortam Kurulumu
 * Süleyman Kılınç (Scrum Master / Yönetici): GitHub reposu kuruldu ve koruma ayarları yapıldı. Proje Kapsamı Belirlendi: Sistem, akciğer röntgenlerinden "Pnömoni (Zatürre)" tespiti yapacaktır. İkili sınıflandırma (Sağlıklı/Hastalıklı) problemi çözülecek olup, model olarak Evrişimli Sinir Ağları (CNN) kullanılacaktır. Veri seti olarak Kaggle "Chest X-Ray Images (Pneumonia)" seçilmiştir.
 
 * Ömer Ensar Şahin: Proje için gereksinim analizi tamamlandı. Doktorlar sisteme giriş yapabilecek. MR ve röntgen görüntüleri yüklenecek. Yapay zeka analiz yapacak. Sonuçlar raporlanacak. Model doğruluk hedefi %85. Veri güvenliği KVKK kurallarına uygun olacak.
@@ -9,7 +9,7 @@
 
 * Zeynep Karataş: Kaggle üzerindeki veri seti araştırıldı. Görüntülerin Normal ve Pnömoni olarak iki sınıfa ayrıldığı görüldü. Model eğitimi öncesinde tüm görüntülerin 224x224 boyutuna yeniden ölçeklendirilmesi ve ön işleme adımlarının uygulanması planlandı.
 
-* 2. Hafta (13 - 19 Mart) - Mimari Tasarım ve Strateji Geliştirme
+  2. Hafta (13 - 19 Mart) - Mimari Tasarım ve Strateji Geliştirme
 
 * Süleyman Kılınç: Mevcut tıbbi görüntü veri kümelerinin (röntgen, MR vb.) boyut, format ve etiket kalitesi açısından detaylı incelenmesi tamamlandı. Görüntülerin modele girmeden önce geçeceği gürültü giderme, normalizasyon ve yeniden boyutlandırma adımlarını içeren ön işleme stratejisi geliştirildi ve rapor haline getirildi.
 
@@ -21,7 +21,7 @@
 
 * Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturma. (Teşhis sonuçları ve doktor notlarını içerecek rapor şablonlarının tasarımı.)
 
-* 3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
+ 3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
 
 * Ömer Ensar Şahin: UI/UX Wireframe Oluşturma. (Kullanıcı arayüzü ve deneyimi tasarımının tamamlanması.) [⚠️ Gecikmiş Görev Takibi Yapılıyor]
 
