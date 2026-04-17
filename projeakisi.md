@@ -16,8 +16,7 @@
 
 * Esmanur Yılmaz: Veritabanı Tasarımı ve Entegrasyon Planlaması. Projenin ihtiyaç duyduğu PostgreSQL şeması tasarlandı. Hastaların bilgileri, tıbbi görüntüler ve teşhis sonuçlarının nasıl saklanacağı belirlenerek tablo ilişkileri tanımlandı.
 
-* Zeynep Karataş: Raporlama Sistemi Gereksinimleri ve Tasarım Şablonu Oluşturma. Teşhis sonuçları, güvenilirlik skorları ve doktor notlarını içeren rapor formatları (PDF, CSV vb.) belirlendi ve örnek bir rapor şablonu oluşturuldu.
-
+* Zeynep Karataş: Raporlama sistemi için detaylı gereksinim analizi yapıldı. Raporlarda hasta bilgileri, görüntü meta verileri, yapay zeka teşhis sonucu, güvenilirlik skoru ve doktor notlarının yer alması planlandı. Ayrıca raporların PDF ve CSV formatlarında oluşturulmasına karar verildi ve bu doğrultuda standart bir rapor şablonu hazırlandı.
  3. Hafta (20 - 26 Mart) - Detaylı Tasarım ve Geliştirme
 * Süleyman Kılınç: DICOM Görüntü Okuma ve Ön İşleme Fonksiyonlarının Geliştirilmesi. (Python tabanlı görüntü iyileştirme fonksiyonlarının planlanması.)
 
@@ -30,4 +29,4 @@
 
 * Esmanur Yılmaz: PostgreSQL Veritabanı Şemasının Tasarlanması. Sistemde kullanılacak verilerin (hasta bilgileri, meta veriler, teşhis sonuçları) saklanması için uygun indeksler ve ölçeklenebilir bir yapı tasarlandı.
 
-* Zeynep Karataş: Temel Raporlama Modülünün Geliştirilmesi. Teşhis sonuçlarını ve hasta meta verilerini içeren, PDF veya benzeri formatlarda çıktı verebilen temel raporlama modülü tasarlandı.
+* Zeynep Karataş: Belirlenen gereksinimlere uygun olarak temel raporlama modülü geliştirildi. Yapay zeka modelinden elde edilen teşhis sonuçları ile hasta verileri entegre edilerek düzenli bir rapor formatına dönüştürüldü. Modül sayesinde sistem çıktıları PDF formatında oluşturulabilir hale getirildi.
