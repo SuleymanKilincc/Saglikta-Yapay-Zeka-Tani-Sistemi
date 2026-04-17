@@ -1,0 +1,18 @@
+# Python gereksiz dosyalar
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# TIBBİ GÖRÜNTÜLER (Çok yer kapladığı için yüklenmeyecek)
+*.dcm
+*.dicom
+*.jpg
+*.jpeg
+*.png
+dataset/
+
+# YAPAY ZEKA MODELLERİ
+*.h5
+*.model
