@@ -1,0 +1,21 @@
+# ============================================================
+#  Sağlıkta Yapay Zeka Destekli Tanı Sistemi
+#  AI Modülü - Python Bağımlılıkları
+#
+#  Kurulum: pip install -r requirements.txt
+# ============================================================
+
+# Yapay Zeka Çatısı
+tensorflow>=2.12.0
+
+# Sayısal Hesaplama
+numpy>=1.23.0
+
+# Makine Öğrenmesi Metrikleri (precision, recall, f1, confusion matrix)
+scikit-learn>=1.2.0
+
+# Grafik ve Görselleştirme
+matplotlib>=3.7.0
+
+# Görüntü İşleme (Süleyman'ın preprocess.py'da da kullandığı kütüphane)
+opencv-python>=4.7.0
