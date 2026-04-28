@@ -1,12 +1,16 @@
 import psycopg2
-from psycopg2.extras import RealDictCursor
 import uuid
+import os # İşletim sistemi işlemleri için
+from dotenv import load_dotenv # .env dosyasını okumak için
 
-# Esmanur'un PostgreSQL bağlantı bilgileri (Burayı kendi şifrenle güncelle)
+# .env dosyasındaki gizli bilgileri yükle
+load_dotenv()
+
+# Şifreyi gizli dosyadan çekiyoruz
 DB_CONFIG = {
     "dbname": "saglik_ai",
     "user": "postgres",
-    "password": "Klnc2008.", # Süleyman buraya kendi şifreni yaz
+    "password": os.getenv("DB_PASSWORD"), 
     "host": "localhost",
     "port": "5432"
 }
