@@ -6,7 +6,7 @@ import uuid
 DB_CONFIG = {
     "dbname": "saglik_ai",
     "user": "postgres",
-    "password": "YOUR_PASSWORD", # Süleyman buraya kendi şifreni yaz
+    "password": "Klnc2008.", # Süleyman buraya kendi şifreni yaz
     "host": "localhost",
     "port": "5432"
 }
