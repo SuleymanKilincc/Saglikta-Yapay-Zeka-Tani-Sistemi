@@ -125,7 +125,7 @@ Tarayıcıdan **http://127.0.0.1:5000** adresine gidin.
 - **Ömer Ensar Şahin** — Yapay Zeka Model Mimarisi
 - **Esmanur** — Veritabanı Tasarımı ve Şema
 - **Zeynep Karataş** — PDF Raporlama Modülü
-
+- **Cumali Bilgiç** — Frontend / Arayüz Geliştirici
 ---
 
 > ⚠️ **Yasal Uyarı:** Bu sistem yalnızca akademik amaçlarla geliştirilmiştir. Gerçek tıbbi teşhis için mutlaka bir doktora başvurunuz.
