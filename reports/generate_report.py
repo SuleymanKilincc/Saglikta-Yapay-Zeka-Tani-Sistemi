@@ -75,12 +75,15 @@ def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi", dosya_adi
     yuzde = round(sonuc_yuzdesi * 100, 1) if sonuc_yuzdesi <= 1 else round(sonuc_yuzdesi, 1)
 
     # Risk Durumu
-    if yuzde >= 70:
-        risk_yazisi, risk_renk = "YÜKSEK RİSK", "#c0392b"
-    elif yuzde >= 40:
-        risk_yazisi, risk_renk = "ORTA RİSK", "#e67e22"
+    if teshis_adi == "Normal":
+        risk_yazisi, risk_renk = "SAĞLIKLI (RİSK YOK)", "#27ae60"
     else:
-        risk_yazisi, risk_renk = "DÜŞÜK RİSK", "#27ae60"
+        if yuzde >= 70:
+            risk_yazisi, risk_renk = "YÜKSEK RİSK", "#c0392b"
+        elif yuzde >= 40:
+            risk_yazisi, risk_renk = "ORTA RİSK", "#e67e22"
+        else:
+            risk_yazisi, risk_renk = "DÜŞÜK RİSK", "#27ae60"
 
     icerik = []
     icerik.append(Paragraph("AkciğerAI Tanı Sistemi - Analiz Raporu", baslik_stili))

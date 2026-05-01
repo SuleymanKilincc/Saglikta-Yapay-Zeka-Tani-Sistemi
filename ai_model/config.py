@@ -41,11 +41,11 @@ TRAINING_HISTORY_PATH = os.path.join(BASE_DIR, "training_history.png")
 # GÖRÜNTÜ AYARLARI
 # ============================================================
 # Süleyman'ın preprocess.py dosyasındaki goruntu_hazirla()
-# fonksiyonu 224x224 boyutunda gri tonlama görüntü üretiyor.
-# Bu değerler o fonksiyonla uyumlu olmalıdır.
+# fonksiyonu 224x224 boyutunda RGB görüntü üretecek.
+# Profesyonel modeller (MobileNetV2) 3 kanal bekler.
 IMG_HEIGHT = 224
 IMG_WIDTH = 224
-IMG_CHANNELS = 1  # Gri tonlama (Grayscale)
+IMG_CHANNELS = 3  # RGB Renkli
 
 # Model girdi boyutu (height, width, channels)
 INPUT_SHAPE = (IMG_HEIGHT, IMG_WIDTH, IMG_CHANNELS)
@@ -94,7 +94,7 @@ DATASET_SINIF_KLASORLERI = {
 # Eğitim ayarları
 EPOCHS = 20              # Eğitim tur sayısı
 BATCH_SIZE = 32           # Her adımda işlenecek görüntü sayısı
-LEARNING_RATE = 0.001     # Öğrenme hızı (Adam optimizer)
+LEARNING_RATE = 0.0001    # Transfer Learning için düşük öğrenme hızı (Adam)
 VALIDATION_SPLIT = 0.2    # Doğrulama seti oranı (%20)
 
 # Model mimarisi ayarları
