@@ -8,12 +8,34 @@ from ai_model.model import teshis_yap
 from reports.generate_report import rapor_olustur # Zeynep'in kodu
 import db_manager # Yeni yazdığımız veritabanı yardımcısı
 
+# ============================================================
+# MODEL OTOMATIK INDIRME
+# ============================================================
+MODEL_PATH = os.path.join('ai_model', 'saglik_cnn_model.h5')
+DRIVE_FILE_ID = '1s4jud1ID-2AXPSMtnMNl63i0RelVc19B'
+
+if not os.path.exists(MODEL_PATH):
+    print("=" * 55)
+    print("  Model dosyasi bulunamadi, Google Drive'dan indiriliyor...")
+    print("  Bu islem birkaç dakika sürebilir, lütfen bekleyin.")
+    print("=" * 55)
+    try:
+        import gdown
+        gdown.download(f'https://drive.google.com/uc?id={DRIVE_FILE_ID}', MODEL_PATH, quiet=False)
+        print("  Model basariyla indirildi!")
+        print("=" * 55)
+    except Exception as e:
+        print(f"  HATA: Model indirilemedi: {e}")
+        print("  Uygulama demo modunda calisacak.")
+        print("=" * 55)
+
 app = Flask(__name__, template_folder='frontend', static_folder='frontend', static_url_path='/static')
 
 UPLOAD_FOLDER = 'static/uploads' # Resimleri kalıcı tutalım ki raporda görünsün
 REPORT_FOLDER = 'static/reports' # PDF'lerin gideceği yer
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(REPORT_FOLDER, exist_ok=True)
+
 
 @app.route('/')
 def ana_sayfa():
