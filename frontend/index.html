@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI X-Ray Tanı Sistemi | Sağlıkta Yapay Zeka</title>
+    <title>AkciğerAI | Hastane Tanı Sistemi</title>
     <meta name="description" content="Yapay zeka destekli röntgen analiz sistemi. Akciğer hastalıklarını hızlı ve güvenilir şekilde tespit edin.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -37,8 +37,8 @@
                 </svg>
             </div>
             <div class="header-text">
-                <h1>AI X-Ray Tanı Sistemi</h1>
-                <p>Yapay Zeka Destekli Akciğer Analizi</p>
+                <h1>AkciğerAI Tanı Sistemi</h1>
+                <p>Yapay Zeka Destekli Akciğer Analizi — Fırat Üniversitesi</p>
             </div>
             <div class="header-badge">
                 <span class="pulse-dot"></span>
@@ -55,21 +55,87 @@
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
                     </svg>
-                    Hasta Bilgileri
+                    Hasta Kayıt Formu
                 </div>
 
-                <div class="form-group">
-                    <label for="patient-name">Hasta Adı Soyadı</label>
-                    <div class="input-wrapper">
-                        <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/>
-                        </svg>
-                        <input type="text" id="patient-name" placeholder="Örn: Ahmet Yılmaz" autocomplete="off">
+                <!-- Ad / Soyad -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="patient-ad">Ad <span style="color:#ef4444">*</span></label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+                            </svg>
+                            <input type="text" id="patient-ad" placeholder="Ahmet" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="patient-soyad">Soyad <span style="color:#ef4444">*</span></label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z"/>
+                            </svg>
+                            <input type="text" id="patient-soyad" placeholder="Yılmaz" autocomplete="off">
+                        </div>
                     </div>
                 </div>
 
+                <!-- Doğum Tarihi / Cinsiyet -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="birth-date">Doğum Tarihi</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+                            </svg>
+                            <input type="date" id="birth-date">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cinsiyet">Cinsiyet</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="8" r="4"/><path d="M12 12v8M9 17h6"/>
+                            </svg>
+                            <select id="cinsiyet">
+                                <option value="B">Belirtilmedi</option>
+                                <option value="E">Erkek</option>
+                                <option value="K">Kadın</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Doktor -->
                 <div class="form-group">
-                    <label>Röntgen Görüntüsü</label>
+                    <label for="doktor-adi">Doktor Adı</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        <input type="text" id="doktor-adi" placeholder="Dr. Ali Veli" autocomplete="off">
+                    </div>
+                </div>
+
+                <!-- Departman -->
+                <div class="form-group">
+                    <label for="departman">Departman</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                        </svg>
+                        <select id="departman">
+                            <option value="Radyoloji">Radyoloji</option>
+                            <option value="Göğüs Hastalıkları">Göğüs Hastalıkları</option>
+                            <option value="Dahiliye">Dahiliye</option>
+                            <option value="Acil Servis">Acil Servis</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Röntgen Yükleme -->
+                <div class="form-group">
+                    <label>Röntgen Görüntüsü <span style="color:#ef4444">*</span></label>
                     <div class="upload-area" id="upload-area" onclick="document.getElementById('xray-upload').click()">
                         <div class="upload-icon-wrapper" id="upload-icon-wrapper">
                             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -97,13 +163,13 @@
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-val">224px</span>
-                        <span class="stat-lbl">Görüntü Boyutu</span>
+                        <span class="stat-val">%94</span>
+                        <span class="stat-lbl">Model Doğruluğu</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-val">CNN</span>
-                        <span class="stat-lbl">Model Tipi</span>
+                        <span class="stat-val">MobileNetV2</span>
+                        <span class="stat-lbl">Model Mimarisi</span>
                     </div>
                 </div>
             </div>
@@ -189,7 +255,7 @@
         </main>
 
         <footer class="app-footer">
-            Sağlıkta Yapay Zeka Destekli Tanı Sistemi &nbsp;|&nbsp; SaglikCNN v1.0 &nbsp;|&nbsp; Demo Amaçlıdır
+            AkciğerAI Tanı Sistemi &nbsp;|&nbsp; MobileNetV2 Transfer Learning &nbsp;|&nbsp; Fırat Üniversitesi — YMT1104
         </footer>
     </div>
 

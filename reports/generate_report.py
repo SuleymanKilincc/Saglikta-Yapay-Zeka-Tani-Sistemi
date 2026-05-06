@@ -37,7 +37,9 @@ except:
     FONT_NORMAL = "Helvetica"
     FONT_BOLD = "Helvetica-Bold"
 
-def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi", dosya_adi="rapor.pdf"):
+def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi",
+                  dosya_adi="rapor.pdf", doktor_adi="Belirtilmedi",
+                  departman="Radyoloji"):
     """
     Hasta bilgilerini ve AI sonuçlarını alarak PDF rapor üretir.
     """
@@ -92,11 +94,13 @@ def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi", dosya_adi
 
     # Bilgi Tablosu
     tablo_verisi = [
-        [Paragraph("Hasta Adı", etiket_stili), Paragraph(hasta_adi, deger_stili)],
-        [Paragraph("Tarih", etiket_stili), Paragraph(datetime.now().strftime("%d.%m.%Y %H:%M"), deger_stili)],
-        [Paragraph("Teşhis", etiket_stili), Paragraph(teshis_adi, deger_stili)],
+        [Paragraph("Hasta Adı", etiket_stili),        Paragraph(hasta_adi, deger_stili)],
+        [Paragraph("Doktor", etiket_stili),            Paragraph(doktor_adi, deger_stili)],
+        [Paragraph("Departman", etiket_stili),         Paragraph(departman, deger_stili)],
+        [Paragraph("Tarih", etiket_stili),             Paragraph(datetime.now().strftime("%d.%m.%Y %H:%M"), deger_stili)],
+        [Paragraph("Teşhis", etiket_stili),            Paragraph(teshis_adi, deger_stili)],
         [Paragraph("Güvenilirlik Skoru", etiket_stili), Paragraph(f"%{yuzde}", deger_stili)],
-        [Paragraph("Risk Durumu", etiket_stili), Paragraph(f"<font color='{risk_renk}'><b>{risk_yazisi}</b></font>", deger_stili)],
+        [Paragraph("Risk Durumu", etiket_stili),       Paragraph(f"<font color='{risk_renk}'><b>{risk_yazisi}</b></font>", deger_stili)],
     ]
 
     tablo = Table(tablo_verisi, colWidths=[5 * cm, 12 * cm])

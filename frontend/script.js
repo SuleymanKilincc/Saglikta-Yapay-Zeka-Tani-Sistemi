@@ -1,15 +1,32 @@
 // ============================================================
 //  AI X-Ray Tanı Sistemi — Frontend JavaScript
-//  app.py /analiz_et route'u ile tam uyumlu
+//  Hastane Sistemi — Tam Hasta Kayıt Formu
 // ============================================================
 
-// Dosya seçimi olayını dinle
 document.addEventListener('DOMContentLoaded', function () {
     const fileInput = document.getElementById('xray-upload');
     const uploadArea = document.getElementById('upload-area');
     const uploadText = document.getElementById('upload-text');
     const analyzeBtn = document.getElementById('analyze-btn');
-    const patientInput = document.getElementById('patient-name');
+    const tcInput = document.getElementById('tc-no');
+    const adInput = document.getElementById('patient-ad');
+    const soyadInput = document.getElementById('patient-soyad');
+
+    // TC Kimlik doğrulama (11 hane, sadece rakam)
+    tcInput.addEventListener('input', function () {
+        this.value = this.value.replace(/\D/g, '').slice(0, 11);
+        const hint = document.getElementById('tc-hint');
+        if (this.value.length > 0 && this.value.length < 11) {
+            hint.textContent = `${this.value.length}/11 hane girildi`;
+            hint.style.color = '#f59e0b';
+        } else if (this.value.length === 11) {
+            hint.textContent = '✓ Geçerli TC No';
+            hint.style.color = '#10b981';
+        } else {
+            hint.textContent = '';
+        }
+        kontrolEt();
+    });
 
     // Dosya seçilince upload alanını güncelle
     fileInput.addEventListener('change', function () {
@@ -21,8 +38,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Hasta adı girilince butonu etkinleştir
-    patientInput.addEventListener('input', kontrolEt);
+    // Diğer inputlar değişince kontrol et
+    adInput.addEventListener('input', kontrolEt);
+    soyadInput.addEventListener('input', kontrolEt);
 
     // Drag & Drop desteği
     uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.style.borderColor = 'var(--blue)'; });
@@ -40,8 +58,11 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function kontrolEt() {
-        const dolu = patientInput.value.trim() !== '' && fileInput.files.length > 0;
-        analyzeBtn.disabled = !dolu;
+        const tcDolu = tcInput.value.trim().length === 11;
+        const adDolu = adInput.value.trim() !== '';
+        const soyadDolu = soyadInput.value.trim() !== '';
+        const dosyaDolu = fileInput.files.length > 0;
+        analyzeBtn.disabled = !(tcDolu && adDolu && soyadDolu && dosyaDolu);
     }
 });
 
@@ -85,36 +106,45 @@ function adimAnimasyonDurdur() {
 
 // ── Ana Analiz Fonksiyonu ─────────────────────────────────────
 async function analizBaslat() {
-    const patientName = document.getElementById('patient-name').value.trim();
+    const tcNo = document.getElementById('tc-no').value.trim();
+    const ad = document.getElementById('patient-ad').value.trim();
+    const soyad = document.getElementById('patient-soyad').value.trim();
+    const dogumTarihi = document.getElementById('birth-date').value;
+    const cinsiyet = document.getElementById('cinsiyet').value;
+    const doktorAdi = document.getElementById('doktor-adi').value.trim() || 'Belirtilmedi';
+    const departman = document.getElementById('departman').value;
     const fileInput = document.getElementById('xray-upload');
 
     // Validasyon
-    if (!patientName) { alert('Lütfen hasta adını girin!'); return; }
+    if (tcNo.length !== 11) { alert('Lütfen geçerli bir TC Kimlik No girin (11 hane)!'); return; }
+    if (!ad || !soyad) { alert('Lütfen hasta adı ve soyadını girin!'); return; }
     if (fileInput.files.length === 0) { alert('Lütfen bir röntgen görüntüsü seçin!'); return; }
+
+    const hastaAdiTam = `${ad} ${soyad}`;
 
     // Yükleniyor durumu
     durumGoster('loading-state');
     adimAnimasyonBaslat();
 
-    // Buton devre dışı
     const btn = document.getElementById('analyze-btn');
     btn.disabled = true;
     btn.classList.add('loading');
     document.getElementById('btn-text').textContent = 'Analiz Ediliyor...';
 
-    // FormData — app.py'deki alan adlarıyla TAM uyumlu:
-    //   request.files['xray_file']
-    //   request.form.get('hasta_adi')
     const formData = new FormData();
-    formData.append('xray_file', fileInput.files[0]);   // app.py L27: request.files['xray_file']
-    formData.append('hasta_adi', patientName);           // app.py L28: request.form.get('hasta_adi')
+    formData.append('xray_file', fileInput.files[0]);
+    formData.append('tc_no', tcNo);
+    formData.append('hasta_adi', ad);
+    formData.append('hasta_soyadi', soyad);
+    formData.append('dogum_tarihi', dogumTarihi || '2000-01-01');
+    formData.append('cinsiyet', cinsiyet);
+    formData.append('doktor_adi', doktorAdi);
+    formData.append('departman', departman);
 
     try {
         const response = await fetch('/analiz_et', {
             method: 'POST',
             body: formData
-            // Content-Type header'ı EKLEME: multipart/form-data boundary'yi
-            // tarayıcı otomatik ayarlar, elle eklerseniz boundary eksik kalır.
         });
 
         adimAnimasyonDurdur();
@@ -126,7 +156,7 @@ async function analizBaslat() {
         const data = await response.json();
 
         if (data.basari) {
-            sonucGoster(patientName, data);
+            sonucGoster(hastaAdiTam, data);
         } else {
             hataGoster(data.hata || 'Sunucudan bilinmeyen hata döndü.');
         }
@@ -149,40 +179,33 @@ async function analizBaslat() {
 function sonucGoster(hastaAdi, data) {
     durumGoster('result-state');
 
-    // Hasta adı
     document.getElementById('result-patient-name').textContent = hastaAdi;
 
-    // Hastalık & ikon
     const hastalik = data.hastalik || '—';
     document.getElementById('diagnosis-name').textContent = hastalik;
     document.getElementById('diagnosis-desc').textContent = data.aciklama || '';
 
-    // Renk sınıfı
     const diagName = document.getElementById('diagnosis-name');
     diagName.className = 'diagnosis-name';
     if (hastalik === 'Normal') { diagName.classList.add('diag-normal'); document.getElementById('result-icon').textContent = '✅'; }
     else if (hastalik === 'Pnömoni') { diagName.classList.add('diag-pnemoni'); document.getElementById('result-icon').textContent = '⚠️'; }
     else { diagName.classList.add('diag-tuberculoz'); document.getElementById('result-icon').textContent = '🔴'; }
 
-    // Güven skoru
     const guven = data.guven_skoru || 0;
     const guvenYuzde = (guven * 100).toFixed(1);
     document.getElementById('confidence-value').textContent = `%${guvenYuzde}`;
     setTimeout(() => {
         document.getElementById('confidence-bar').style.width = `${guvenYuzde}%`;
-        // Renk
         const bar = document.getElementById('confidence-bar');
         if (guven >= 0.7) bar.style.background = 'linear-gradient(90deg, #10b981, #059669)';
         else if (guven >= 0.4) bar.style.background = 'linear-gradient(90deg, #f59e0b, #d97706)';
         else bar.style.background = 'linear-gradient(90deg, #ef4444, #dc2626)';
     }, 100);
 
-    // Demo uyarısı
     const demoWarning = document.getElementById('demo-warning');
     if (data.demo_modu) demoWarning.classList.remove('hidden');
     else demoWarning.classList.add('hidden');
 
-    // PDF raporu
     const downloadBtn = document.getElementById('download-btn');
     if (data.rapor_url) {
         downloadBtn.href = data.rapor_url;
