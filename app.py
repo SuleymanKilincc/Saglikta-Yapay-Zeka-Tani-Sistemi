@@ -31,11 +31,13 @@ if not os.path.exists(MODEL_PATH):
 
 app = Flask(__name__, template_folder='frontend', static_folder='frontend', static_url_path='/static')
 
-UPLOAD_FOLDER = 'static/uploads' # Resimleri kalıcı tutalım ki raporda görünsün
-REPORT_FOLDER = 'static/reports' # PDF'lerin gideceği yer
+UPLOAD_FOLDER = 'static/uploads'
+REPORT_FOLDER = 'static/reports'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(REPORT_FOLDER, exist_ok=True)
 
+# Veritabanı tabloları otomatik oluşturulsun
+db_manager.veritabani_kur()
 
 @app.route('/')
 def ana_sayfa():
