@@ -101,9 +101,7 @@ DB_PASSWORD=kendi_sifrenizi_yazin
 python app.py
 ```
 
-Tarayıcıdan **http://127.0.0.1:5000** adresine gidin.
-
-> **Not:** `ai_model/saglik_cnn_model.h5` dosyası Git'e dahil edilmemiştir (büyük boyutu nedeniyle). Modeli kendiniz eğitmek için önce `dataset/` klasörünü oluşturup veri setini yerleştirin, ardından `python ai_model/train.py` komutunu çalıştırın.
+> **Not:** Model dosyası (`saglik_cnn_model.h5`) ilk çalıştırmada **Google Drive'dan otomatik olarak indirilir** (~90MB). İnternet bağlantınızın olduğundan emin olun. İndirme tamamlandıktan sonra uygulama tam modda çalışmaya başlar.
 
 ---
 
