@@ -94,7 +94,8 @@ def analiz_api():
                 teshis_adi=sonuc['hastalik'],
                 dosya_adi=report_path,
                 doktor_adi=doktor_adi,
-                departman=departman
+                departman=departman,
+                goruntu_adi=filename
             )
 
             return jsonify({
