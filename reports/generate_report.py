@@ -39,7 +39,8 @@ except:
 
 def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi",
                   dosya_adi="rapor.pdf", doktor_adi="Belirtilmedi",
-                  departman="Radyoloji"):
+                  departman="Radyoloji", goruntu_adi="Belirtilmedi",
+                  doktor_notu="", model_surumu="MobileNetV2"):
     """
     Hasta bilgilerini ve AI sonuçlarını alarak PDF rapor üretir.
     """
@@ -97,6 +98,8 @@ def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi",
         [Paragraph("Hasta Adı", etiket_stili),        Paragraph(hasta_adi, deger_stili)],
         [Paragraph("Doktor", etiket_stili),            Paragraph(doktor_adi, deger_stili)],
         [Paragraph("Departman", etiket_stili),         Paragraph(departman, deger_stili)],
+        [Paragraph("Görüntü", etiket_stili),           Paragraph(goruntu_adi, deger_stili)],
+        [Paragraph("Model", etiket_stili),             Paragraph(model_surumu, deger_stili)],
         [Paragraph("Tarih", etiket_stili),             Paragraph(datetime.now().strftime("%d.%m.%Y %H:%M"), deger_stili)],
         [Paragraph("Teşhis", etiket_stili),            Paragraph(teshis_adi, deger_stili)],
         [Paragraph("Güvenilirlik Skoru", etiket_stili), Paragraph(f"%{yuzde}", deger_stili)],
@@ -115,6 +118,13 @@ def rapor_olustur(hasta_adi, sonuc_yuzdesi, teshis_adi="Belirlenmedi",
 
     icerik.append(tablo)
     icerik.append(Spacer(1, 1 * cm))
+    if doktor_notu:
+        icerik.append(Paragraph("Doktor Notu", ParagraphStyle(
+            "NotBaslik", fontName=FONT_BOLD, fontSize=11, textColor=colors.HexColor("#1a3c5e")
+        )))
+        icerik.append(Paragraph(doktor_notu, deger_stili))
+        icerik.append(Spacer(1, 0.5 * cm))
+
     icerik.append(Paragraph("NOT: Bu rapor yapay zeka tarafından üretilmiştir. Kesin tanı için doktor görüşü alınız.", 
                             ParagraphStyle("Uyari", fontName=FONT_NORMAL, fontSize=9, textColor=colors.grey)))
 

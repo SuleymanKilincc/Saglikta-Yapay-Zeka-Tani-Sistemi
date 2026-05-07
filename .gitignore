@@ -16,3 +16,10 @@ dataset/
 # YAPAY ZEKA MODELLERİ
 *.h5
 *.model
+
+# Uygulama calisirken uretilen dosyalar
+static/uploads/
+static/reports/*.pdf
+reports/ornek_rapor.pdf
+ai_model/evaluation_report.txt
+ai_model/confusion_matrix.png
