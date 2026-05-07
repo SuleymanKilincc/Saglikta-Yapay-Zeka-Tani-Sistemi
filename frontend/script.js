@@ -8,25 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const uploadArea = document.getElementById('upload-area');
     const uploadText = document.getElementById('upload-text');
     const analyzeBtn = document.getElementById('analyze-btn');
-    const tcInput = document.getElementById('tc-no');
     const adInput = document.getElementById('patient-ad');
     const soyadInput = document.getElementById('patient-soyad');
-
-    // TC Kimlik doğrulama (11 hane, sadece rakam)
-    tcInput.addEventListener('input', function () {
-        this.value = this.value.replace(/\D/g, '').slice(0, 11);
-        const hint = document.getElementById('tc-hint');
-        if (this.value.length > 0 && this.value.length < 11) {
-            hint.textContent = `${this.value.length}/11 hane girildi`;
-            hint.style.color = '#f59e0b';
-        } else if (this.value.length === 11) {
-            hint.textContent = '✓ Geçerli TC No';
-            hint.style.color = '#10b981';
-        } else {
-            hint.textContent = '';
-        }
-        kontrolEt();
-    });
 
     // Dosya seçilince upload alanını güncelle
     fileInput.addEventListener('change', function () {
@@ -58,11 +41,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function kontrolEt() {
-        const tcDolu = tcInput.value.trim().length === 11;
         const adDolu = adInput.value.trim() !== '';
         const soyadDolu = soyadInput.value.trim() !== '';
         const dosyaDolu = fileInput.files.length > 0;
-        analyzeBtn.disabled = !(tcDolu && adDolu && soyadDolu && dosyaDolu);
+        analyzeBtn.disabled = !(adDolu && soyadDolu && dosyaDolu);
     }
 });
 
@@ -106,7 +88,7 @@ function adimAnimasyonDurdur() {
 
 // ── Ana Analiz Fonksiyonu ─────────────────────────────────────
 async function analizBaslat() {
-    const tcNo = document.getElementById('tc-no').value.trim();
+    const tcNo = ''; // TC otomatik üretilecek, formda alan yok
     const ad = document.getElementById('patient-ad').value.trim();
     const soyad = document.getElementById('patient-soyad').value.trim();
     const dogumTarihi = document.getElementById('birth-date').value;
@@ -116,7 +98,6 @@ async function analizBaslat() {
     const fileInput = document.getElementById('xray-upload');
 
     // Validasyon
-    if (tcNo.length !== 11) { alert('Lütfen geçerli bir TC Kimlik No girin (11 hane)!'); return; }
     if (!ad || !soyad) { alert('Lütfen hasta adı ve soyadını girin!'); return; }
     if (fileInput.files.length === 0) { alert('Lütfen bir röntgen görüntüsü seçin!'); return; }
 
