@@ -4,25 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AkciğerAI | Hastane Tanı Sistemi</title>
-    <meta name="description" content="Yapay zeka destekli röntgen analiz sistemi. Akciğer hastalıklarını hızlı ve güvenilir şekilde tespit edin.">
+    <meta name="description" content="Yapay zeka destekli röntgen analiz sistemi.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-
-    <!-- Arkaplan partikülleri -->
     <div class="bg-particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
         <div class="particle"></div>
     </div>
-
     <div class="app-container">
-
-        <!-- HEADER -->
         <header class="app-header">
             <div class="header-icon">
                 <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -30,8 +23,7 @@
                     <path d="M18 10v16M10 18h16" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
                     <defs>
                         <linearGradient id="grad1" x1="3" y1="3" x2="33" y2="33" gradientUnits="userSpaceOnUse">
-                            <stop stop-color="#4f8ef7"/>
-                            <stop offset="1" stop-color="#7c3aed"/>
+                            <stop stop-color="#4f8ef7"/><stop offset="1" stop-color="#7c3aed"/>
                         </linearGradient>
                     </defs>
                 </svg>
@@ -40,22 +32,27 @@
                 <h1>AkciğerAI Tanı Sistemi</h1>
                 <p>Yapay Zeka Destekli Akciğer Analizi — Fırat Üniversitesi</p>
             </div>
-            <div class="header-badge">
-                <span class="pulse-dot"></span>
-                Sistem Aktif
-            </div>
+            <div class="header-badge"><span class="pulse-dot"></span>Sistem Aktif</div>
         </header>
-
-        <!-- ANA İÇERİK -->
         <main class="main-content">
-
-            <!-- SOL PANEL: Form -->
             <div class="panel form-panel">
                 <div class="panel-title">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+                        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z"/>
                     </svg>
                     Hasta Kayıt Formu
+                </div>
+
+                <!-- TC Kimlik No -->
+                <div class="form-group">
+                    <label for="tc-no">TC Kimlik No <span style="color:#ef4444">*</span></label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/>
+                        </svg>
+                        <input type="text" id="tc-no" placeholder="12345678901" maxlength="11" autocomplete="off">
+                    </div>
+                    <small id="tc-hint" style="color:#78909c; font-size:11px;"></small>
                 </div>
 
                 <!-- Ad / Soyad -->
@@ -155,44 +152,26 @@
                     <span id="btn-text">Analiz Et</span>
                 </button>
 
-                <!-- Mini İstatistik -->
                 <div class="mini-stats">
-                    <div class="stat-item">
-                        <span class="stat-val">3</span>
-                        <span class="stat-lbl">Hastalık Sınıfı</span>
-                    </div>
+                    <div class="stat-item"><span class="stat-val">3</span><span class="stat-lbl">Hastalık Sınıfı</span></div>
                     <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-val">%94</span>
-                        <span class="stat-lbl">Model Doğruluğu</span>
-                    </div>
+                    <div class="stat-item"><span class="stat-val">%94</span><span class="stat-lbl">Model Doğruluğu</span></div>
                     <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-val">MobileNetV2</span>
-                        <span class="stat-lbl">Model Mimarisi</span>
-                    </div>
+                    <div class="stat-item"><span class="stat-val">MobileNetV2</span><span class="stat-lbl">Model Mimarisi</span></div>
                 </div>
             </div>
 
-            <!-- SAĞ PANEL: Sonuç -->
             <div class="panel result-panel" id="result-panel">
-
-                <!-- Bekleme Ekranı -->
                 <div id="idle-state" class="panel-state">
                     <div class="idle-illustration">
                         <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" opacity="0.3">
                             <rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/>
-                            <path d="M7 8h.01M12 8h.01M17 8h.01M7 11.5h10"/>
                         </svg>
                     </div>
                     <p>Hasta bilgilerini girin ve röntgen görüntüsünü yükleyin</p>
                 </div>
-
-                <!-- Yükleniyor Ekranı -->
                 <div id="loading-state" class="panel-state hidden">
-                    <div class="loader-ring">
-                        <div></div><div></div><div></div><div></div>
-                    </div>
+                    <div class="loader-ring"><div></div><div></div><div></div><div></div></div>
                     <p class="loading-text">Yapay Zeka modeli görüntüyü işliyor...</p>
                     <div class="loading-steps">
                         <div class="step active" id="step-1">📷 Görüntü hazırlanıyor</div>
@@ -200,8 +179,6 @@
                         <div class="step" id="step-3">📄 Rapor oluşturuluyor</div>
                     </div>
                 </div>
-
-                <!-- Sonuç Ekranı -->
                 <div id="result-state" class="panel-state hidden">
                     <div class="result-header">
                         <div class="result-icon" id="result-icon">✅</div>
@@ -210,13 +187,11 @@
                             <div class="result-subtitle">Teşhis Sonucu</div>
                         </div>
                     </div>
-
                     <div class="diagnosis-card" id="diagnosis-card">
                         <div class="diagnosis-label">Tespit Edilen Durum</div>
                         <div class="diagnosis-name" id="diagnosis-name">—</div>
                         <div class="diagnosis-desc" id="diagnosis-desc">—</div>
                     </div>
-
                     <div class="confidence-section">
                         <div class="confidence-header">
                             <span>AI Güven Skoru</span>
@@ -226,39 +201,29 @@
                             <div class="confidence-bar-fill" id="confidence-bar"></div>
                         </div>
                     </div>
-
                     <div class="demo-warning hidden" id="demo-warning">
                         ⚠️ Demo modu: Eğitilmiş model bulunamadı, simülasyon sonucu gösteriliyor.
                     </div>
-
                     <a class="download-btn hidden" id="download-btn" href="#" target="_blank">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
                         </svg>
                         PDF Raporu İndir
                     </a>
-
-                    <div class="disclaimer">
-                        ⚕️ Bu sonuç yapay zeka tarafından üretilmiştir. Kesin tanı için doktor görüşü alınız.
-                    </div>
+                    <div class="disclaimer">⚕️ Bu sonuç yapay zeka tarafından üretilmiştir. Kesin tanı için doktor görüşü alınız.</div>
                 </div>
-
-                <!-- Hata Ekranı -->
                 <div id="error-state" class="panel-state hidden">
                     <div class="error-icon">⚠️</div>
                     <p class="error-title">Analiz Başarısız</p>
                     <p class="error-msg" id="error-msg">Bilinmeyen hata oluştu.</p>
                     <button class="retry-btn" onclick="tekrarDene()">Tekrar Dene</button>
                 </div>
-
             </div>
         </main>
-
         <footer class="app-footer">
             AkciğerAI Tanı Sistemi &nbsp;|&nbsp; MobileNetV2 Transfer Learning &nbsp;|&nbsp; Fırat Üniversitesi — YMT1104
         </footer>
     </div>
-
     <script src="/static/script.js"></script>
 </body>
 </html>

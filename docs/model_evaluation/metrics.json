@@ -1,5 +1,5 @@
 {
-  "tarih": "2026-05-07T02:58:09.526403",
+  "tarih": "2026-05-07T03:02:13.620345",
   "model": "MobileNetV2-TransferLearning",
   "test_accuracy": 0.8619,
   "macro_f1": 0.8281317413456272,
