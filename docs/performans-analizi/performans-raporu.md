@@ -24,7 +24,7 @@ Grafikte dogrulama dogrulugunun en iyi seviyeye egitimin son bolumunde ulastigi 
 
 ## Egitim ve Dogrulama Egrileri Nasil?
 
-Egitim dogrulugu epoch ilerledikce duzenli olarak artmistir. Dogrulama dogrulugu da benzer sekilde yukselen bir egilim gostermistir; ancak egitim dogrulugunun biraz altinda kalmistir. Iki egri arasindaki fark cok acilmadigi icin agir overfitting belirtisi yoktur. Loss grafiginde hem egitim hem dogrulama kaybinin zamanla azaldigi gorulmektedir. Bu durum modelin egitim boyunca daha kararlı tahminler yapmaya basladigini gosterir.
+Egitim dogrulugu epoch ilerledikce duzenli olarak artmistir. Dogrulama dogrulugu da benzer sekilde yukselen bir egilim gostermistir; ancak egitim dogrulugunun biraz altinda kalmistir. Iki egri arasindaki fark cok acilmadigi icin agir overfitting belirtisi yoktur. Loss grafiginde hem egitim hem dogrulama kaybinin zamanla azaldigi gorulmektedir. Bu durum modelin egitim boyunca daha kararli tahminler yapmaya basladigini gosterir.
 
 Test dogrulugunun dogrulama dogrulugundan dusuk olmasi, modelin farkli kaynaklardan gelen rontgenlerde daha fazla veriyle desteklenmesi gerektigini gosterir.
 
