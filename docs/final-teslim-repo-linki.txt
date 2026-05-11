@@ -1,0 +1,5 @@
+GitHub Repo Linki:
+https://github.com/SuleymanKilincc/Saglikta-Yapay-Zeka-Tani-Sistemi
+
+Teslim Notu:
+Final teslim arsivi; repo baglantisi, docs/raporlar klasorundeki PDF raporlar, docs/ekran-goruntuleri klasoru ve performans analizi ciktisini bir araya getirmek icin olusturulmustur.

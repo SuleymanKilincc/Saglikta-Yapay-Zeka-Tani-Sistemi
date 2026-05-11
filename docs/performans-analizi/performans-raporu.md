@@ -1,72 +1,43 @@
-# Performans Analizi ve Iyilestirme Onerileri
+# Performans Raporu
 
 ## Gorev Bilgisi
 
 - Sorumlu: Zeynep Karatas
 - Hafta: 5
-- Gorev: Yapay zeka modelinin hiz, dogruluk ve genel verimlilik acisindan analiz edilmesi; iyilestirme alanlarinin belirlenmesi.
+- Incelenen grafik: `ai_model/training_history.png`
+- Teslim klasoru: `docs/performans-analizi/`
 
-## Mevcut Model Ozeti
+## Kullanilan Performans Degerleri
 
-Projede gogus rontgeni goruntulerini Normal, Pnomoni ve Tuberkuloz siniflarina ayirmak icin MobileNetV2 tabanli transfer learning mimarisi kullanilmistir. Model, web uygulamasinda yuklenen goruntuyu on isleme adimindan gecirdikten sonra teshis sonucunu ve guven skorunu uretir. Bu sonuc PDF raporlama modulu ve veritabani kaydi ile birlikte kullaniciya sunulur.
-
-README dosyasinda paylasilan referans sonuclara gore modelin temel metrikleri asagidaki gibidir:
+Model egitimi MobileNetV2 tabanli transfer learning mimarisi ile yapilandirilmistir. Projede paylasilan referans sonuclara gore egitim dogrulugu %97.24, dogrulama dogrulugu %94.09 ve test dogrulugu %86.19 seviyesindedir. `training_history.png` grafigi bu egitim surecinin accuracy ve loss egilimlerini gostermek icin hazirlanmistir.
 
 | Metrik | Deger |
 |---|---:|
 | Egitim dogrulugu | %97.24 |
 | Dogrulama dogrulugu | %94.09 |
 | Test dogrulugu | %86.19 |
-| Model mimarisi | MobileNetV2 Transfer Learning |
-| Giris boyutu | 224 x 224 RGB |
-| Sinif sayisi | 3 |
+| Epoch sayisi | 20 |
 
-## Dogruluk Analizi
+## En Iyi Sonuc Kacinci Epoch'ta Alindi?
 
-Egitim ve dogrulama dogruluklari yuksek seviyededir. Ancak test dogrulugunun dogrulama dogrulugundan daha dusuk olmasi, modelin gercek hayattaki farkli rontgen kalitelerine ve veri dagilimina karsi daha dikkatli izlenmesi gerektigini gosterir. Bu fark, veri seti dengesizligi, goruntu kalitesi farklari veya egitim verisine fazla uyum gibi nedenlerden kaynaklanabilir.
+Grafikte dogrulama dogrulugunun en iyi seviyeye egitimin son bolumunde ulastigi gorulmektedir. En iyi dogrulama sonucu 20. epoch civarinda alinmistir. Bu noktada egitim dogrulugu %97.24, dogrulama dogrulugu ise %94.09 seviyesindedir.
 
-Modelin sinif bazli davranisini netlestirmek icin `ai_model/evaluate.py` dosyasinda accuracy, precision, recall, F1-score ve confusion matrix ureten degerlendirme akisi bulunmaktadir. Bu akisin model dosyasi ve test veri seti hazir oldugunda calistirilmasi, hangi hastalik siniflarinda karisma oldugunu gormek icin yeterlidir.
+## Egitim ve Dogrulama Egrileri Nasil?
 
-## Hiz ve Verimlilik Analizi
+Egitim dogrulugu epoch ilerledikce duzenli olarak artmistir. Dogrulama dogrulugu da benzer sekilde yukselen bir egilim gostermistir; ancak egitim dogrulugunun biraz altinda kalmistir. Iki egri arasindaki fark cok acilmadigi icin agir overfitting belirtisi yoktur. Loss grafiginde hem egitim hem dogrulama kaybinin zamanla azaldigi gorulmektedir. Bu durum modelin egitim boyunca daha kararli tahminler yapmaya basladigini gosterir.
 
-MobileNetV2 hafif ve verimli bir CNN mimarisi oldugu icin web tabanli kullanim icin uygundur. Tek rontgen goruntusu uzerinde tahmin akisi genel olarak su adimlardan olusur:
-
-1. Goruntunun yuklenmesi ve guvenli dosya adi ile kaydedilmesi.
-2. Goruntunun 224 x 224 boyutuna getirilmesi ve normalize edilmesi.
-3. Model tahmininin alinmasi.
-4. Sonucun veritabanina kaydedilmesi.
-5. PDF raporunun uretilmesi.
-
-Bu akis icinde en fazla sure tuketebilecek noktalar modelin ilk yuklenmesi, buyuk goruntu dosyalarinin islenmesi ve PDF rapor olusturma adimidir. Modelin her tahminde tekrar yuklenmesi yerine uygulama baslangicinda bir kez yuklenip bellekten kullanilmasi performansi belirgin sekilde artirabilir.
-
-## Guclu Yonler
-
-- Transfer learning kullanimi kucuk ve orta olcekli tibbi veri setlerinde daha dengeli sonuc almayi kolaylastirir.
-- MobileNetV2 mimarisi hiz ve dogruluk arasinda iyi bir denge sunar.
-- Tahmin sonucu guven skoru ile birlikte rapora aktarildigi icin doktorun yorumu desteklenir.
-- PDF raporlama ve veritabani kaydi ile model ciktisi kalici hale getirilmistir.
-- Demo modu, model dosyasi bulunmadiginda uygulamanin tamamen durmasini engeller.
-
-## Zayif Yonler ve Riskler
-
-- Test dogrulugunun dogrulama dogrulugundan dusuk olmasi genelleme riskine isaret eder.
-- Veri seti sinif dagilimi dengesizse az temsil edilen hastaliklarda recall degeri dusuk kalabilir.
-- Guven skoru tek basina klinik karar icin yeterli degildir; doktor onayi zorunlu tutulmalidir.
-- Model dosyasinin dis kaynaktan indirilmesi ilk calistirmada gecikmeye neden olabilir.
-- Uygulama tarafinda uretilen rapor dosyalari duzenli temizlenmezse depolama alani gereksiz buyuyebilir.
+Test dogrulugunun dogrulama dogrulugundan dusuk olmasi, modelin farkli kaynaklardan gelen rontgenlerde daha fazla veriyle desteklenmesi gerektigini gosterir.
 
 ## Iyilestirme Onerileri
 
-| Alan | Oneri | Beklenen Katki |
-|---|---|---|
-| Veri kalitesi | Dusuk kaliteli ve hatali etiketli goruntuler ayiklanmali | Daha guvenilir egitim |
-| Veri dengesi | Normal, Pnomoni ve Tuberkuloz siniflari dengeli hale getirilmeli | Sinif bazli performans artisi |
-| Veri artirma | Rotation, zoom, brightness ve contrast augmentation uygulanmali | Gercek dunya goruntulerine dayaniklilik |
-| Model izleme | Confusion matrix ve F1-score her egitimden sonra kaydedilmeli | Zayif siniflarin erken tespiti |
-| Performans | Model uygulama baslangicinda tek kez yuklenmeli | Daha hizli tahmin |
-| Raporlama | Raporlara model surumu ve analiz tarihi eklenmeli | Izlenebilirlik |
-| Guvenlik | Yuklenen dosya tipi ve boyutu daha siki dogrulanmali | Kullanim guvenligi |
+| Oneri | Beklenen Katki |
+|---|---|
+| Daha fazla Normal, Pnomoni ve Tuberkuloz goruntusu eklemek | Test dogrulugunu ve genelleme gucunu artirir |
+| Sinif dengesini kontrol etmek | Az temsil edilen siniflarda recall degerini iyilestirir |
+| Veri artirma yontemlerini genisletmek | Farkli rontgen kalitelerine dayanikliligi artirir |
+| MobileNetV2 son katmanlarinda fine-tuning yapmak | Dogrulama ve test performansini artirabilir |
+| Confusion matrix'i duzenli incelemek | Hangi hastalik siniflarinin karistigini netlestirir |
 
 ## Sonuc
 
-Model mevcut haliyle akademik bir tani destek sistemi icin yeterli bir prototip seviyesindedir. En onemli gelistirme alani, test performansinin sinif bazinda daha detayli izlenmesi ve gercek hayattaki farkli rontgen kalitelerine karsi dayanimin artirilmasidir. Raporlama sistemi ile model ciktisinin PDF olarak saklanmasi proje teslimi acisindan guclu bir tamamlayici katman olusturmaktadir.
+Model, mevcut sonuclara gore proje icin guclu bir tani destek prototipi sunmaktadir. En iyi performans 20. epoch civarinda alinmistir. Egitim ve dogrulama egrileri genel olarak uyumludur; ancak test dogrulugunu artirmak icin daha fazla veri, sinif dengesi kontrolu, veri artirma ve fine-tuning onerilmektedir.
