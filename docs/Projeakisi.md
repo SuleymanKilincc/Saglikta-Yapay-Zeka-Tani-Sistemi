@@ -53,6 +53,8 @@ Hafta 5: Performans Analizi ve Iyilestirme Onerileri
 
 Zeynep Karatas: Yapay zeka modelinin hiz, dogruluk ve genel verimlilik acisindan performans analizi tamamlandi. MobileNetV2 tabanli modelin guclu ve zayif yonleri degerlendirildi; veri kalitesi, sinif dengesi, model izleme, raporlama ve sistem verimliligi icin iyilestirme onerileri dokumante edildi.
 
+Süleyman Kılınç: Algoritma optimizasyonu ve test senaryoları tamamlandı. Normal, Pnömoni ve Tüberküloz sınıfları için 6 farklı test senaryosu geliştirildi. Sınıf bazında precision/recall/F1/AUC analizleri yapıldı. Tespit edilen sorunlar (Pnömoni düşük precision, Tüberküloz düşük recall) belgelendi. Sınıf ağırlıklandırması ve Learning Rate Scheduler başta olmak üzere somut optimizasyon önerileri kod örnekleriyle sunuldu. Çıktı: docs/test-senaryolari/test_senaryolari.md
+
 
 Hafta 6: Final Proje Teslimi ve Arsivleme
 
