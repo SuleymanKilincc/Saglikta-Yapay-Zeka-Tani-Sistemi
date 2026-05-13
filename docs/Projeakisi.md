@@ -47,3 +47,30 @@ Cumali Bilgiç: HTML, CSS ve JavaScript kullanılarak temel web arayüzü iskele
 Esmanur Yılmaz: Verilerin (hasta bilgileri, teşhis sonuçları vb.) saklanması için PostgreSQL veritabanı şeması tasarlandı ve veri tipleri belirlendi.
 
 Zeynep Karataş: Teşhis sonuçlarını ve hasta bilgilerini içeren temel raporlama modülü geliştirildi; PDF formatında çıktı alma altyapısı kuruldu.
+
+
+Hafta 5: Performans Analizi ve Iyilestirme Onerileri
+
+Zeynep Karatas: Yapay zeka modelinin hiz, dogruluk ve genel verimlilik acisindan performans analizi tamamlandi. MobileNetV2 tabanli modelin guclu ve zayif yonleri degerlendirildi; veri kalitesi, sinif dengesi, model izleme, raporlama ve sistem verimliligi icin iyilestirme onerileri dokumante edildi.
+
+Süleyman Kılınç: Algoritma optimizasyonu ve test senaryoları tamamlandı. Normal, Pnömoni ve Tüberküloz sınıfları için 6 farklı test senaryosu geliştirildi. Sınıf bazında precision/recall/F1/AUC analizleri yapıldı. Tespit edilen sorunlar (Pnömoni düşük precision, Tüberküloz düşük recall) belgelendi. Sınıf ağırlıklandırması ve Learning Rate Scheduler başta olmak üzere somut optimizasyon önerileri kod örnekleriyle sunuldu. Çıktı: docs/test-senaryolari/test_senaryolari.md
+
+
+Hafta 6: Final Proje Teslimi ve Arsivleme
+
+Zeynep Karatas: Raporlama modulu, rapor gereksinimleri, performans analizi ve final teslim dokumantasyonu bir araya getirildi. Proje ciktilarinin hangi klasorlerde yer aldigi belirlendi, runtime sirasinda olusan rapor dosyalarinin kaynak koddan ayrilmasi icin arsivleme duzeni tamamlandi.
+
+
+Zeynep Karatas Sprint Teslim Detaylari
+
+Hafta 1: Veri seti kalite kriterleri, dosya formati kontrolleri, sinif dengesi riskleri ve on isleme adimlari `docs/veri-seti-on-isleme-plani.md` dosyasinda detaylandirildi.
+
+Hafta 2: Rapor gereksinimleri doktor/departman bilgisi, model uyari metni, ornek rapor taslagi ve kabul kriterleriyle guclendirildi.
+
+Hafta 3: Raporlama sisteminin hasta bilgileri, goruntu bilgileri, AI sonucu, PDF formati, otomatik olusturma akisi ve veritabani entegrasyonu `reports/raporlama_sistemi_tasarimi.md` dosyasinda tasarlandi.
+
+Hafta 4: PDF raporlama modulu geriye uyumlu sekilde goruntu adi, model bilgisi ve opsiyonel doktor notu alanlarini destekleyecek sekilde guclendirildi.
+
+Hafta 5: Model performans analizi; dogruluk, hiz, verimlilik, zayif/guclu yonler ve iyilestirme onerileriyle `docs/performans-analizi/performans-raporu.md` dosyasinda tamamlandi.
+
+Hafta 6: Final teslim ve arsivleme kapsami `docs/FINAL_PROJE_TESLIMI.md` dosyasinda kod, dokumantasyon, raporlama, veritabani, arayuz ve runtime ciktilari acisindan toparlandi.

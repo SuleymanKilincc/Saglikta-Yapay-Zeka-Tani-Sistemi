@@ -23,9 +23,9 @@ Görüntü pikselleri standart olarak 0 ile 255 (8-bit) arasında değerler alı
     *   Aşırı büyük sayısal değerlerin neden olabileceği hesaplama hatalarını önler.
 
 ## 4. Model Formatına Hazırlık
-Son aşamada, işlenen görüntü `np.expand_dims(resim, axis=-1)` ile `(224, 224, 1)` boyutuna getirilir. Bu, modelin beklediği "kanal" boyutunu ekler ve veriyi eğitim için hazır hale getirir.
+Son aşamada, işlenen görüntü `np.expand_dims(resim, axis=0)` ile `(224, 224, 1)` boyutuna getirilir. Bu, modelin beklediği "kanal" boyutunu ekler ve veriyi eğitim için hazır hale getirir.
 
 ---
 **Dosya:** `data_processing/preprocess.py`  
-**Hazırlayan:** Antigravity (AI Assistan)  
+**Hazırlayan:** Ömer Ensar Şahin  
 **Tarih:** 10.05.2026

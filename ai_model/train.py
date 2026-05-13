@@ -121,10 +121,11 @@ def veri_seti_hazirla():
         print(f"   Test dizini  : {test_dir}")
     
     # ---- EĞİTİM VERİSİ: Veri Artırma (Data Augmentation) ----
-    # Tıbbi görüntülerde veri artırma, modelin farklı açı ve 
-    # pozisyonlardaki görüntüleri de öğrenmesini sağlar.
+    # MobileNetV2 ön işleme fonksiyonunu kullan ([-1, 1] aralığına çevirir)
+    from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+
     train_datagen = ImageDataGenerator(
-        rescale=1.0 / 255.0,  # Piksel normalizasyonu (0-255 → 0-1)
+        preprocessing_function=preprocess_input,
         validation_split=VALIDATION_SPLIT,
         rotation_range=AUGMENTATION_CONFIG["rotation_range"],
         width_shift_range=AUGMENTATION_CONFIG["width_shift_range"],
@@ -135,16 +136,14 @@ def veri_seti_hazirla():
     )
     
     # ---- DOĞRULAMA/TEST VERİSİ: Sadece normalizasyon ----
-    # Test verisine augmentation uygulanmaz, sadece normalize edilir.
-    test_datagen = ImageDataGenerator(rescale=1.0 / 255.0)
+    test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     
     # ---- VERİ YÜKLEME ----
-    # color_mode='grayscale' → Süleyman'ın preprocess.py ile uyumlu (1 kanal)
     print("\n📊 Eğitim verisi yükleniyor (augmentation ile)...")
     train_generator = train_datagen.flow_from_directory(
         train_dir,
         target_size=(IMG_HEIGHT, IMG_WIDTH),
-        color_mode='grayscale',
+        color_mode='rgb',
         batch_size=BATCH_SIZE,
         class_mode='categorical',
         subset='training',
@@ -155,7 +154,7 @@ def veri_seti_hazirla():
     validation_generator = train_datagen.flow_from_directory(
         train_dir,
         target_size=(IMG_HEIGHT, IMG_WIDTH),
-        color_mode='grayscale',
+        color_mode='rgb',
         batch_size=BATCH_SIZE,
         class_mode='categorical',
         subset='validation',
@@ -169,7 +168,7 @@ def veri_seti_hazirla():
         test_generator = test_datagen.flow_from_directory(
             test_dir,
             target_size=(IMG_HEIGHT, IMG_WIDTH),
-            color_mode='grayscale',
+            color_mode='rgb',
             batch_size=BATCH_SIZE,
             class_mode='categorical',
             shuffle=False,

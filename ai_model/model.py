@@ -45,92 +45,53 @@ from config import (
 
 
 # ============================================================
-# CNN MODEL MİMARİSİ
+# CNN MODEL MİMARİSİ (TRANSFER LEARNING)
 # ============================================================
 def SaglikCNN():
     """
     Göğüs röntgeni görüntülerinden hastalık teşhisi yapan
-    Evrişimsel Sinir Ağı (CNN) modeli oluşturur.
+    Transfer Learning (MobileNetV2) tabanlı model.
 
     Mimari:
-        Input (224, 224, 1)
-            → Conv2D(32, 3x3) + BatchNorm + ReLU + MaxPool(2x2)
-            → Conv2D(64, 3x3) + BatchNorm + ReLU + MaxPool(2x2)
-            → Conv2D(128, 3x3) + BatchNorm + ReLU + MaxPool(2x2)
+        Input (224, 224, 3)
+            → MobileNetV2 (Önceden eğitilmiş, weights='imagenet')
             → GlobalAveragePooling2D
             → Dense(128) + Dropout(0.5)
             → Dense(3, softmax)
 
     Returns:
-        tensorflow.keras.Model: Derlenmiş CNN modeli
-
-    Not:
-        - Giriş boyutu Süleyman'ın preprocess.py çıktısıyla
-          uyumludur: (224, 224, 1) gri tonlama
-        - Çıkış: 3 sınıf (Normal, Pnömoni, Tüberküloz)
-          üzerinde olasılık dağılımı
+        tensorflow.keras.Model: Derlenmiş Transfer Learning modeli
     """
+    from tensorflow.keras.applications import MobileNetV2
 
-    model = models.Sequential(name="SaglikCNN")
+    # Önceden eğitilmiş MobileNetV2 modelini yükle (Sınıflandırıcı kısmı hariç)
+    base_model = MobileNetV2(
+        weights='imagenet',
+        include_top=False,
+        input_shape=INPUT_SHAPE
+    )
+    
+    # Transfer Learning için ana modelin ağırlıklarını dondur (freeze)
+    # Sadece kendi eklediğimiz son katmanları eğiteceğiz.
+    base_model.trainable = False
 
-    # ---- BLOK 1: İlk Özellik Çıkarma Katmanı ----
-    # 32 adet 3x3 filtre ile temel kenar ve doku özellikleri çıkarılır
-    model.add(layers.Conv2D(
-        filters=32,
-        kernel_size=(3, 3),
-        padding='same',
-        input_shape=INPUT_SHAPE,
-        name='conv2d_blok1'
-    ))
-    model.add(layers.BatchNormalization(name='batchnorm_blok1'))
-    model.add(layers.Activation('relu', name='relu_blok1'))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2), name='maxpool_blok1'))
-    # Çıkış boyutu: (112, 112, 32)
-
-    # ---- BLOK 2: Orta Seviye Özellik Çıkarma ----
-    # 64 filtre ile daha karmaşık yapılar (lezyon sınırları vb.) öğrenilir
-    model.add(layers.Conv2D(
-        filters=64,
-        kernel_size=(3, 3),
-        padding='same',
-        name='conv2d_blok2'
-    ))
-    model.add(layers.BatchNormalization(name='batchnorm_blok2'))
-    model.add(layers.Activation('relu', name='relu_blok2'))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2), name='maxpool_blok2'))
-    # Çıkış boyutu: (56, 56, 64)
-
-    # ---- BLOK 3: Üst Seviye Özellik Çıkarma ----
-    # 128 filtre ile hastalık-spesifik örüntüler (konsolidasyon, kavite vb.) yakalanır
-    model.add(layers.Conv2D(
-        filters=128,
-        kernel_size=(3, 3),
-        padding='same',
-        name='conv2d_blok3'
-    ))
-    model.add(layers.BatchNormalization(name='batchnorm_blok3'))
-    model.add(layers.Activation('relu', name='relu_blok3'))
-    model.add(layers.MaxPooling2D(pool_size=(2, 2), name='maxpool_blok3'))
-    # Çıkış boyutu: (28, 28, 128)
-
-    # ---- GLOBAL AVERAGE POOLING ----
-    # Her özellik haritasının ortalamasını alarak boyut indirgeme yapar.
-    # Flatten yerine kullanılır çünkü parametresizdir ve aşırı öğrenmeyi azaltır.
+    model = models.Sequential(name="Saglik_MobileNetV2")
+    
+    # 1. Önceden eğitilmiş temel model (Özellik çıkarıcı)
+    model.add(base_model)
+    
+    # 2. Boyut indirgeme
     model.add(layers.GlobalAveragePooling2D(name='global_avg_pool'))
-    # Çıkış boyutu: (128,)
-
-    # ---- SINIFLANDIRMA KATMANLARI ----
-    # Tam bağlı (Dense) katman ile özellikler birleştirilir
+    
+    # 3. Kendi sınıflandırıcımız (Fine-tuning kısmı)
     model.add(layers.Dense(DENSE_UNITS, activation='relu', name='dense_fc'))
     model.add(layers.Dropout(DROPOUT_RATE, name='dropout'))
-    # Çıkış boyutu: (128,)
-
-    # ---- ÇIKIŞ KATMANI ----
-    # Softmax aktivasyonu her sınıf için olasılık üretir (toplamı 1.0)
+    
+    # 4. Çıkış Katmanı (Normal, Pnömoni, Tüberküloz)
     model.add(layers.Dense(SINIF_SAYISI, activation='softmax', name='output'))
-    # Çıkış boyutu: (3,) → [Normal, Pnömoni, Tüberküloz] olasılıkları
 
     return model
+
 
 
 # ============================================================

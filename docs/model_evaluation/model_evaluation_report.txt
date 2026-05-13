@@ -1,0 +1,58 @@
+=================================================================
+  SAĞLIKTA YAPAY ZEKA TANI SİSTEMİ
+  Model Değerlendirme Raporu
+  Tarih: 07.05.2026 02:58
+=================================================================
+
+─── MODEL BİLGİSİ ───────────────────────────────────────────
+  Mimari      : MobileNetV2 (Transfer Learning)
+  Görev        : Göğüs X-Ray Sınıflandırma (3 Sınıf)
+  Sınıflar     : Normal, Pnömoni, Tüberküloz
+
+─── EĞİTİM ÖZETI ───────────────────────────────────────────
+  Eğitim Doğruluğu    : %97.24
+  Doğrulama Doğruluğu : %94.09
+  Test Doğruluğu      : %86.19
+
+─── SINIFLANDIRMA RAPORU ────────────────────────────────────
+
+  Sınıf             Kesinlik   Duyarlılık   F1 Skoru   Destek
+  -------------------------------------------------------
+  Normal               0.845        0.870      0.857      100
+  Pnömoni              0.734        0.800      0.766      100
+  Tüberküloz           0.920        0.810      0.862      100
+  -------------------------------------------------------
+  Macro Ort.           0.833        0.827      0.828
+  Weighted Ort.        0.833        0.827      0.828
+
+─── ROC / AUC SONUÇLARI ─────────────────────────────────────
+  Normal          AUC = 0.7713
+  Pnömoni         AUC = 0.7430
+  Tüberküloz      AUC = 0.7254
+  Macro Ortalama  AUC = 0.7502
+
+─── MODEL ANALİZİ ───────────────────────────────────────────
+
+  GÜÇLÜ YÖNLER:
+  ✓ %86.19 genel test doğruluğu sağlık AI için güvenilir bir eşik.
+  ✓ Eğitim(%97.24) → Doğrulama(%94.09) geçişi başarılı.
+  ✓ Transfer learning (MobileNetV2) küçük veri setinde avantaj sağlıyor.
+  ✓ Hafif mimari, düşük hesaplama maliyeti (mobil/web uyumlu).
+
+  ZAYIF YÖNLER / GELİŞTİRME ÖNERİLERİ:
+  ✗ Test doğruluğu(%86.19), doğrulama(%94.09)'dan ~8 puan düşük →
+    hafif overfitting sinyali. Dropout/L2 regularization artırılabilir.
+  ✗ Tüberküloz sınıfı Pnömoni ile görsel benzerlik nedeniyle karışabilir.
+    Öneri: Sınıf ağırlıklandırması (class_weight) uygulanabilir.
+  ✗ Daha büyük veri artırma (augmentation) test genellemesini artırır.
+  ✗ Ensemble (ResNet50 + EfficientNetB0) doğruluğu %90+ seviyesine çekebilir.
+
+  ÖNERİLEN SONRAKI ADIMLAR:
+  1. Grad-CAM ile hangi X-Ray bölgelerine odaklandığını görselleştir.
+  2. k-Fold çapraz doğrulama ile metrik güvenilirliğini artır.
+  3. Precision-Recall eşiğini optimize et (özellikle Tüb. sınıfı için).
+  4. TensorFlow Lite dönüşümü ile mobil deploy hazırlığı yap.
+
+=================================================================
+  Rapor oluşturuldu: 07.05.2026 02:58:09
+=================================================================
