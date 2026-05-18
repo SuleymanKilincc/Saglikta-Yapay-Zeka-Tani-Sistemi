@@ -4,9 +4,9 @@ Bu rapor, "Sağlıkta Yapay Zeka Destekli Tanı Sistemi" projesi kapsamında kul
 
 ## 1. Görüntü Formatı ve Renk Dönüşümü (RGB/Grayscale)
 Tıbbi görüntüler (Röntgen, MR vb.) genellikle yüksek çözünürlüklü ve farklı renk derinliklerine sahip olabilir. Projemizde:
-*   **İşlem:** Görüntüler `cv2.imread(path, cv2.IMREAD_GRAYSCALE)` komutu kullanılarak okunmaktadır.
-*   **Neden:** Tıbbi tanıda renk bilgisi genellikle tanısal bir değer taşımaz; doku yoğunluğu ve yapısal formlar gri tonlarda daha net analiz edilebilir. Ayrıca, tek kanal (grayscale) kullanımı modelin parametre sayısını azaltarak eğitim sürecini hızlandırır.
-*   **RGB Notu:** Eğer kaynak görüntüler RGB formatındaysa, bunlar işleme aşamasında gri tonlamaya çevrilerek veri boyutundan tasarruf sağlanır ve modelin odak noktası doku anomalilerine yönlendirilir.
+*   **İşlem:** Görüntüler `cv2.imread(path, cv2.IMREAD_COLOR)` komutu kullanılarak RGB formatında okunmaktadır.
+*   **Neden:** MobileNetV2 ve benzeri önceden eğitilmiş (pre-trained) derin öğrenme modelleri 3 kanallı (RGB) giriş resimleri bekler. Bu nedenle, tıbbi görüntüler gri tonlamalı (röntgen vb.) bile olsa, modelin giriş katmanıyla uyumlu olması için 3 kanallı olarak okunur.
+*   **Grayscale Notu:** Eğer orijinal görüntü siyah-beyaz ise, OpenCV bunu 3 kanala kopyalayarak RGB formatına dönüştürür.
 
 ## 2. Boyutlandırma (Resize) İşlemi
 Farklı cihazlardan gelen tıbbi görüntüler çok farklı çözünürlüklerde (2000x2000, 1024x768 vb.) olabilir. Sinir ağlarının sabit bir giriş boyutu beklemesi nedeniyle:
@@ -23,7 +23,7 @@ Görüntü pikselleri standart olarak 0 ile 255 (8-bit) arasında değerler alı
     *   Aşırı büyük sayısal değerlerin neden olabileceği hesaplama hatalarını önler.
 
 ## 4. Model Formatına Hazırlık
-Son aşamada, işlenen görüntü `np.expand_dims(resim, axis=0)` ile `(224, 224, 1)` boyutuna getirilir. Bu, modelin beklediği "kanal" boyutunu ekler ve veriyi eğitim için hazır hale getirir.
+Son aşamada, işlenen görüntü `np.expand_dims(resim, axis=0)` ile boyutlandırılarak modelin beklediği batch boyutuna uygun hale getirilir ve tek bir resim `(1, 224, 224, 3)` şeklinde ifade edilir. Burada asıl görüntünün boyutu `(224, 224, 3)`'tür. Bu işlem veriyi eğitim veya tahmin için hazır hale getirir.
 
 ---
 **Dosya:** `data_processing/preprocess.py`  
